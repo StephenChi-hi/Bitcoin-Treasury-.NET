@@ -1,0 +1,84 @@
+/* wwwroot/css/layout.css */
+
+#splash-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
+    backdrop-filter: blur(10px);
+}
+
+#splash-screen.dark {
+    background: linear-gradient(135deg, #0a0a0c 0%, #121214 100%);
+}
+
+#splash-logo {
+    font-size: 5rem;
+    margin-bottom: 2rem;
+    animation: bounceIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#splash-text {
+    display: flex;
+    gap: 0.25rem;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #0a0a0a;
+}
+
+#splash-screen.dark #splash-text {
+    color: #ffffff;
+}
+
+#splash-text span {
+    display: inline-block;
+    animation: slideUp 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+#splash-percentage {
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+    color: #666666;
+    font-weight: 500;
+    animation: fadeIn 0.5s ease-out 0.3s forwards;
+    opacity: 0;
+}
+
+#splash-screen.dark #splash-percentage {
+    color: #888888;
+}
+
+/* Fixed: Single @ symbols for raw CSS file parsing */
+@keyframes bounceIn {
+    0% { transform: scale(0.3); opacity: 0; }
+    50% { opacity: 1; }
+    70% { transform: scale(1.05); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slideUp {
+    0% { transform: translateY(30px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeOutScale {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(1.1); }
+}
+
+#splash-screen.hide {
+    animation: fadeOutScale 0.7s ease-in-out forwards;
+    pointer-events: none;
+}

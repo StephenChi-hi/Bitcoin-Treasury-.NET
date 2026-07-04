@@ -1,0 +1,23 @@
+{
+  "name": "bitcoin-treasury-.net",
+  "version": "1.0.0",
+  "description": "A .NET-powered full-stack application featuring Bitcoin treasury tracking, real-time valuation, and secure asset management.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "tailwindcss -i ./Styles/app.css -o ./wwwroot/css/site.css",
+    "watch:css": "tailwindcss -i ./Styles/app.css -o ./wwwroot/css/site.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.5.2",
+    "postcss": "^8.5.16",
+    "tailwindcss": "^4.3.2"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.3.2",
+    "motion": "^12.42.2"
+  }
+}

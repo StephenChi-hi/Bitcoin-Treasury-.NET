@@ -7,9 +7,36 @@
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Bitcoin_Treasury_.NET.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Bitcoin-Treasury-.NET.styles.css" asp-append-version="true" />
+    
 </head>
 <body>
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <div id="splash-logo">₿</div>
+        <div id="splash-text">
+            <span style="animation-delay: 0s">B</span>
+            <span style="animation-delay: 0.08s">i</span>
+            <span style="animation-delay: 0.16s">t</span>
+            <span style="animation-delay: 0.24s">c</span>
+            <span style="animation-delay: 0.32s">o</span>
+            <span style="animation-delay: 0.40s">i</span>
+            <span style="animation-delay: 0.48s">n</span>
+            <span style="animation-delay: 0.56s"> </span>
+            <span style="animation-delay: 0.64s">T</span>
+            <span style="animation-delay: 0.72s">r</span>
+            <span style="animation-delay: 0.80s">e</span>
+            <span style="animation-delay: 0.88s">a</span>
+            <span style="animation-delay: 0.96s">s</span>
+            <span style="animation-delay: 1.04s">u</span>
+            <span style="animation-delay: 1.12s">r</span>
+            <span style="animation-delay: 1.20s">y</span>
+        </div>
+        <div id="splash-percentage">0%</div>
+    </div>
+      <script src="~/js/splash.js" asp-append-version="true" defer></script>
+
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
@@ -37,7 +64,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer justify-center bottom-0 w-full flex text-muted">
         <div class="container">
             &copy; 2026 - Bitcoin_Treasury_.NET - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
