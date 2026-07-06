@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,64 +8,46 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Bitcoin-Treasury-.NET.styles.css" asp-append-version="true" />
-    
+    <link rel="stylesheet" href="~/Bitcoin_Treasury_.NET.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/navbar.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Splash Screen -->
-    <div id="splash-screen">
-        <div id="splash-logo">₿</div>
-        <div id="splash-text">
-            <span style="animation-delay: 0s">B</span>
-            <span style="animation-delay: 0.08s">i</span>
-            <span style="animation-delay: 0.16s">t</span>
-            <span style="animation-delay: 0.24s">c</span>
-            <span style="animation-delay: 0.32s">o</span>
-            <span style="animation-delay: 0.40s">i</span>
-            <span style="animation-delay: 0.48s">n</span>
-            <span style="animation-delay: 0.56s"> </span>
-            <span style="animation-delay: 0.64s">T</span>
-            <span style="animation-delay: 0.72s">r</span>
-            <span style="animation-delay: 0.80s">e</span>
-            <span style="animation-delay: 0.88s">a</span>
-            <span style="animation-delay: 0.96s">s</span>
-            <span style="animation-delay: 1.04s">u</span>
-            <span style="animation-delay: 1.12s">r</span>
-            <span style="animation-delay: 1.20s">y</span>
-        </div>
-        <div id="splash-percentage">0%</div>
-    </div>
-      <script src="~/js/splash.js" asp-append-version="true" defer></script>
+    <div class="theme-transition-overlay" id="reveal-overlay"></div>
 
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Bitcoin_Treasury_.NET</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+
+    <header class="navbar-container">
+        <nav class="liquid-nav">
+            <a class="nav-brand" asp-area="" asp-page="/Index">
+                <span class="brand-icon">₿</span> Bitcoin . USD
+            </a>
+            
+            <button class="nav-toggle" id="nav-menu-toggle" aria-label="Toggle Navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <div class="nav-menu" id="nav-links-menu">
+                <a class="nav-link-item" asp-area="" asp-page="/Index">Treasury</a>
+                <a class="nav-link-item" asp-area="" asp-page="/Community">Community</a>
+                <a class="nav-link-item" asp-area="" asp-page="/Login">Login</a>
+                
+                <button type="button" id="theme-toggle-btn" class="theme-toggle" aria-label="Toggle Theme">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="M4.93 4.93l1.41 1.41"></path><path d="M17.66 17.66l1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="M6.34 17.66l-1.41 1.41"></path><path d="M19.07 4.93l-1.41 1.41"></path></svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+
+    <div class="container main-content-wrapper">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer justify-center bottom-0 w-full flex text-muted">
-        <div class="container">
+    <footer class="footer text-muted">
+        <div class="container text-center">
             &copy; 2026 - Bitcoin_Treasury_.NET - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
@@ -73,6 +55,8 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/navbar.js" asp-append-version="true"></script>
+    <script src="~/js/dashboard.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

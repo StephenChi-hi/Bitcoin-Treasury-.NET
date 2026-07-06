@@ -1,11 +1,9 @@
-/* wwwroot/js/splash.js */
 document.addEventListener("DOMContentLoaded", () => {
   const percentage = document.querySelector("#splash-percentage");
   const splashScreen = document.querySelector("#splash-screen");
 
-  if (!splashScreen || !percentage) return; // Guard clause in case layout changes
+  if (!splashScreen || !percentage) return;
 
-  // Check dark mode
   if (
     document.documentElement.classList.contains("dark") ||
     window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -14,8 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   let count = 0;
+  // Reduced incremental step size so it tracks closer to our ~4 second animation timeline
   const counterInterval = setInterval(() => {
-    count += Math.random() * 8;
+    count += Math.random() * 3.5;
     if (count < 100) {
       percentage.textContent = Math.floor(count) + "%";
     } else {
@@ -27,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
           splashScreen.remove();
         }, 700);
-      }, 500);
+      }, 600); // Small extra buffer for the final letters to breathe
     }
-  }, 100);
+  }, 120);
 });

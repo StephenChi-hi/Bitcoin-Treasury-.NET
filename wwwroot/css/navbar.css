@@ -1,0 +1,224 @@
+/* --- CSS Custom Properties for Themes --- */
+:root[data-theme="light"] {
+    --bg-color: #f5f7fa;
+    --text-color: #1e293b;
+    --glass-bg: rgba(255, 255, 255, 0.45);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --glass-shadow: rgba(31, 38, 135, 0.08);
+    --nav-link-color: #334155;
+    --nav-link-hover: #f59e0b; /* Bitcoin Gold tone */
+    --overlay-color: #0f172a; /* Color expanding into dark mode */
+}
+
+:root[data-theme="dark"] {
+    --bg-color: #121214;
+    --text-color: #f8fafc;
+    --glass-bg: rgba(10, 12, 16, 0.45);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: rgba(0, 0, 0, 0.5);
+    --nav-link-color: #cbd5e1;
+    --nav-link-hover: #fbbf24;
+    --overlay-color: #f5f7fa; /* Color expanding into light mode */
+}
+
+/* Base resets to match theme swaps smoothly */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+}
+
+.main-content-wrapper {
+    margin-top: 120px; /* Leave breathing room for floating nav */
+}
+
+/* --- Floating Liquid Glass Navbar Styles --- */
+.navbar-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1000px;
+    z-index: 1000;
+}
+
+/* Fine-tuning the Navbar alignment with JetBrains Mono */
+.nav-link-item {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--nav-link-color);
+    letter-spacing: -0.01em;
+}
+
+
+.liquid-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 30px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border: 1px solid var(--glass-border);
+    /* Liquid fluid curvature asymmetry */
+    border-radius: 40px 35px 45px 38px;
+    box-shadow: 0 8px 32px 0 var(--glass-shadow);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.liquid-nav:hover {
+    border-radius: 35px 45px 35px 45px; /* Slight fluid deformation effect */
+    box-shadow: 0 12px 40px 0 var(--glass-shadow);
+}
+
+.nav-brand {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--text-color) !important;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.brand-icon {
+    color: #f59e0b;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.nav-link-item {
+    color: var(--nav-link-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.25s ease;
+    position: relative;
+}
+
+.nav-link-item:hover {
+    color: var(--nav-link-hover);
+}
+
+/* Subtle accent line on hover */
+.nav-link-item::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--nav-link-hover);
+    transition: width 0.3s ease;
+}
+
+.nav-link-item:hover::after {
+    width: 100%;
+}
+
+/* --- SVGs and Theme Toggle Button --- */
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Switch visible SVG based on current document theme */
+html[data-theme="light"] .moon-icon { display: none; }
+html[data-theme="light"] .sun-icon { display: block; color: #f59e0b; }
+html[data-theme="dark"] .sun-icon { display: none; }
+html[data-theme="dark"] .moon-icon { display: block; color: #464547; }
+
+/* --- Mobile Responsive Rules --- */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.nav-toggle .bar {
+    width: 22px;
+    height: 2px;
+    background-color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 100%;
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid var(--glass-border);
+        border-radius: 24px;
+        flex-direction: column;
+        padding: 24px;
+        gap: 20px;
+        box-shadow: 0 10px 30px var(--glass-shadow);
+        opacity: 0;
+        transform: translateY(-10px) scale(0.95);
+        pointer-events: none;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .nav-menu.active {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+    }
+    
+    /* Toggle Button Animation to X */
+    .nav-toggle.open .bar:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+    .nav-toggle.open .bar:nth-child(2) {
+        opacity: 0;
+    }
+}
+
+/* --- Theme Transition Overlay Logic --- */
+.theme-transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999; /* Make sure it overlaps everything but the user interaction layer at click time */
+    pointer-events: none;
+    background-color: var(--overlay-color);
+    clip-path: circle(0% at 0px 0px);
+    transition: none;
+}
+
+.theme-transition-overlay.animating {
+    transition: clip-path 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    clip-path: circle(150% at var(--x) var(--y));
+}

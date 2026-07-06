@@ -1,0 +1,26 @@
+@page "{slug?}"
+@model Bitcoin_Treasury_.NET.Pages.Blog.StoryModel
+@{
+    ViewData["Title"] = Model.StoryTitle ?? "Research Story";
+}
+
+<div class="dashboard-wrapper animate-fade-in">
+    <div class="liquid-glass-panel mt-5">
+        <a asp-page="/Community" class="hero-inline-link mb-4">← Back to Community</a>
+        <div class="ticker-identity mb-2">#SCALING #L2 #RESEARCH</div>
+        <h1 class="main-crypto-price">@Model.StoryTitle</h1>
+        <p class="sync-text">BY THE CYPHERPUNK RESEARCH COLLECTIVE • 12 JAN 2026</p>
+        <hr class="panel-divider" />
+        <article class="paragraph-text story-content-body">
+            @if (Model.StoryContent != null)
+            {
+                @Html.Raw(Model.StoryContent)
+            }
+            else
+            {
+                <div class="skeleton loading-cell" style="width: 100%; height: 300px;"></div>
+                <p>Wait while we dynamically parse L2 protocol shifts.</p>
+            }
+        </article>
+    </div>
+</div>

@@ -1,10 +1,154 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Dashboard";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div id="splash-screen">
+        <div id="splash-content" class="uppercase">
+            <div id="splash-logo">₿</div>
+            <div id="splash-text">
+                <span style="animation-delay: 1.40s">B</span>
+                <span style="animation-delay: 1.55s">i</span>
+                <span style="animation-delay: 1.70s">t</span>
+                <span style="animation-delay: 1.85s">c</span>
+                <span style="animation-delay: 2.00s">o</span>
+                <span style="animation-delay: 2.15s">i</span>
+                <span style="animation-delay: 2.30s">n</span>
+            </div>
+        </div>
+        <div id="splash-percentage">0%</div>
+    </div>
+    <script src="~/js/splash.js" asp-append-version="true" defer></script>
+<div class="dashboard-wrapper animate-fade-in">
+    <!-- BITCOIN PRICE TRACKER PANEL -->
+    <div class="crypto-card liquid-glass-panel">
+        <!-- Top Status Bar Row -->
+        <div class="panel-header-row">
+            <div class="ticker-identity">
+                <span class="asset-title">BITCOIN</span>
+                <span class="ticker-divider">•</span>
+                <span class="currency-base">USD</span>
+            </div>
+            <div class="sync-status">
+                <span class="pulse-indicator"></span>
+                <span class="sync-text" id="btc-updated-time">UPDATED 57S AGO</span>
+            </div>
+        </div>
+
+        <!-- Hero Price Counter Area -->
+        <div class="hero-price-block">
+            <h1 class="main-crypto-price" id="btc-price">$61,619.00</h1>
+            <div class="price-delta-badge native-down" id="btc-delta-container">
+                <span class="delta-arrow">▼</span>
+                <span class="delta-value" id="btc-delta-value">-1.79%</span>
+                <span class="delta-timeline">24h</span>
+            </div>
+        </div>
+
+        <hr class="panel-divider" />
+
+        <!-- Metrics Grid Section -->
+        <div class="metrics-dashboard-grid">
+            <div class="metric-item">
+                <span class="metric-label">24H HIGH</span>
+                <span class="metric-value" id="btc-high">$63,857.00</span>
+            </div>
+            <div class="metric-item">
+                <span class="metric-label">24H LOW</span>
+                <span class="metric-value" id="btc-low">$61,339.00</span>
+            </div>
+            <div class="metric-item">
+                <span class="metric-label">VOLUME</span>
+                <span class="metric-value" id="btc-volume">$28.01B</span>
+            </div>
+            <div class="metric-item">
+                <span class="metric-label">MARKET CAP</span>
+                <span class="metric-value" id="btc-market-cap">$1.24T</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- TREASURY HOLDINGS DASHBOARD (Now safely inside the alignment wrapper) -->
+    <div class="treasury-card liquid-glass-panel mt-4">
+        <div class="treasury-control-header">
+            <div class="treasury-title-group">
+                <h2 class="treasury-section-title">Treasury Holdings</h2>
+                <p class="treasury-section-subtitle"><span id="entity-count-display">175</span> companies holding BTC</p>
+            </div>
+            
+            <div class="segment-filter-pillbox">
+             <button type="button" class="segment-btn active" id="filter-companies">
+    <span class="segment-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="6" y1="21" x2="6" y2="17"></line><line x1="10" y1="21" x2="10" y2="17"></line><line x1="14" y1="21" x2="14" y2="17"></line><line x1="18" y1="21" x2="18" y2="17"></line></svg>
+    </span> Companies
+</button>
+<button type="button" class="segment-btn" id="filter-governments">
+    <span class="segment-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+    </span> Governments
+</button>
+            </div>
+        </div>
+
+        <div class="treasury-summary-grid mb-4">
+            <div class="summary-metric-box">
+                <span class="metric-label">TOTAL HOLDINGS</span>
+                <div class="skeleton-wrapper hide-on-load"><div class="skeleton loading-text-h2"></div></div>
+                <h3 class="summary-metric-value loaded-content d-none" id="total-holdings-val">1.28M BTC</h3>
+                <span class="summary-sublabel">BTC held across all entities</span>
+            </div>
+            <div class="summary-metric-box">
+                <span class="metric-label">TOTAL VALUE (USD)</span>
+                <div class="skeleton-wrapper hide-on-load"><div class="skeleton loading-text-h2"></div></div>
+                <h3 class="summary-metric-value loaded-content d-none" id="total-value-val">$79.09B</h3>
+                <span class="summary-sublabel">Current market value</span>
+            </div>
+            <div class="summary-metric-box">
+                <span class="metric-label">MARKET CAP DOMINANCE</span>
+                <div class="skeleton-wrapper hide-on-load"><div class="skeleton loading-text-h2"></div></div>
+                <h3 class="summary-metric-value loaded-content d-none" id="market-cap-dom-val">6.0900%</h3>
+                <span class="summary-sublabel">% of BTC total supply held</span>
+            </div>
+        </div>
+
+        <div class="responsive-table-scroller">
+            <table class="treasury-data-table">
+                <thead>
+                    <tr>
+                        <th style="width: 50px;">#</th>
+                        <th>NAME</th>
+                        <th>TICKER</th>
+                        <th>COUNTRY</th>
+                        <th class="text-end">HOLDINGS</th>
+                        <th class="text-end">ENTRY VALUE</th>
+                        <th class="text-end">CURRENT VALUE (P&L)</th>
+                        <th class="text-end">% OF SUPPLY</th>
+                    </tr>
+                </thead>
+                <tbody id="treasury-table-body">
+                    <tr class="skeleton-row-placeholder">
+                        <td><div class="skeleton loading-cell"></div></td>
+                        <td><div class="skeleton loading-cell" style="width: 140px;"></div></td>
+                        <td><div class="skeleton loading-cell" style="width: 70px;"></div></td>
+                        <td><div class="skeleton loading-cell" style="width: 40px; border-radius: 12px;"></div></td>
+                        <td><div class="skeleton loading-cell ms-auto" style="width: 80px;"></div></td>
+                        <td><div class="skeleton loading-cell ms-auto" style="width: 90px;"></div></td>
+                        <td><div class="skeleton loading-cell ms-auto" style="width: 130px;"></div></td>
+                        <td><div class="skeleton loading-cell ms-auto" style="width: 60px;"></div></td>
+                    </tr>
+                    <tr class="skeleton-row-placeholder">
+                        <td><div class="skeleton loading-cell"></div></td>
+                        <td><div class="skeleton loading-cell" style="width: 110px;"></div></td>
+                        <td><div class="skeleton loading-cell" style="width: 65px;"></div></td>
+                        <td><div class="skeleton loading-cell" style="width: 40px; border-radius: 12px;"></div></td>
+                        <td><div class="skeleton loading-cell ms-auto" style="width: 85px;"></div></td>
+                        <td><div class="skeleton loading-cell ms-auto" style="width: 75px;"></div></td>
+                        <td><div class="skeleton loading-cell ms-auto" style="width: 110px;"></div></td>
+                        <td><div class="skeleton loading-cell ms-auto" style="width: 60px;"></div></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

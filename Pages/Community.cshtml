@@ -1,0 +1,180 @@
+@page
+@model Bitcoin_Treasury_.NET.Pages.CommunityModel
+@{
+    ViewData["Title"] = "Community";
+}
+
+<div class="dashboard-wrapper animate-fade-in">
+    <!-- HERO BOX STRUCTURE INSPIRED BY image_e0cb58.jpg -->
+    <div class="community-hero-card">
+        <div class="hero-main-content">
+            <!-- Left Side Branding Content -->
+            <div class="hero-left-column">
+                <span class="hero-mini-tag">#1 GLOBAL BITCOIN ALIGNMENT</span>
+                <h1 class="hero-title-text">New Energy<br>for the Network</h1>
+                
+                <div class="hero-cta-links">
+                    <a href="#join" class="hero-inline-link">Join Node <span class="arrow-diagonal">↗</span></a>
+                    <a href="#events" class="hero-inline-link">Global Meetups <span class="arrow-diagonal">↗</span></a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Distinctive Bottom Cutout Metrics Row mimicking image_e0cb58.jpg -->
+        <div class="hero-cutout-footer">
+            <div class="community-stat-item">
+                <h2 class="stat-number">21 mil</h2>
+                <p class="stat-label">Hard cap terminal supply limit</p>
+            </div>
+            <div class="community-stat-item">
+                <h2 class="stat-number">45K+</h2>
+                <p class="stat-label">Active validating nodes globally</p>
+            </div>
+            <div class="community-stat-item">
+                <h2 class="stat-number">1.2M</h2>
+                <p class="stat-label">Developers working in open-source</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- LOWER CONTENT Row matching layout design rhythm -->
+    <div class="community-secondary-row mt-5">
+        <div class="secondary-title-block">
+            <h2 class="focus-heading">Focusing on code, <span class="text-muted-fade">we maintain decentralized consensus</span></h2>
+        </div>
+        <div class="secondary-desc-block">
+            <p class="paragraph-text">
+                We ensure that every layer we build has strict architectural validation checks. Sustainable solutions for a peer-to-peer system that fuels a modern global sovereign financial future.
+            </p>
+        </div>
+    </div>
+
+    <section class="liquid-glass-panel mt-5" id="stories">
+        <div class="panel-header-row align-items-baseline mb-4">
+            <h2 class="treasury-section-title">Stories & Research</h2>
+            <a asp-area="" asp-page="/Blog/Index" class="hero-inline-link">View All <span class="arrow-diagonal">↗</span></a>
+        </div>
+
+        <div class="metrics-dashboard-grid stories-grid">
+            <a asp-area="" asp-page="/Blog/Story" asp-route-slug="scaling-the-network" class="metric-item glass-card-clickable story-card">
+                <span class="ticker-identity mb-2">#SCALING</span>
+                <h4 class="story-title">L2 Solutions: Beyond the Lightning Network</h4>
+                <p class="story-excerpt paragraph-text">Exploring dynamic advancements in RGB and Ark protocols for robust Bitcoin utility.</p>
+                <div class="card-arrow">↗</div>
+            </a>
+
+            <a asp-area="" asp-page="/Blog/Story" asp-route-slug="global-adoption" class="metric-item glass-card-clickable story-card">
+                <span class="ticker-identity mb-2">#ADOPTION</span>
+                <h4 class="story-title">The Geopolitics of Sovereign Adoption</h4>
+                <p class="story-excerpt paragraph-text">Analyzing shifts in national reserve strategies as Bitcoin enters the global treasury.</p>
+                <div class="card-arrow">↗</div>
+            </a>
+
+            <a asp-area="" asp-page="/Blog/Story" asp-route-slug="mining-consensus" class="metric-item glass-card-clickable story-card">
+                <span class="ticker-identity mb-2">#CONSENSUS</span>
+                <h4 class="story-title">Decentralization vs. The 51% Matrix</h4>
+                <p class="story-excerpt paragraph-text">A mathematical breakdown of mining pool concentration and protocol security.</p>
+                <div class="card-arrow">↗</div>
+            </a>
+        </div>
+    </section>
+
+    <section class="liquid-glass-panel mt-5" id="projects">
+        <div class="treasury-control-header">
+            <div class="treasury-title-group">
+                <h2 class="treasury-section-title">Open-Source Initiatives</h2>
+                <p class="treasury-section-subtitle">Active projects supported by the Treasury</p>
+            </div>
+            <a asp-area="" asp-page="/Projects/Index" class="hero-inline-link">Browse Map <span class="arrow-diagonal">↗</span></a>
+        </div>
+
+        <div class="treasury-summary-grid projects-grid">
+            <div class="summary-metric-box project-card">
+                <span class="ticker-identity">ACTIVE DEVELOPMENT</span>
+                <a asp-area="" asp-page="/Projects/Details" asp-route-slug="bip340" class="project-title-link">
+                    <h3 class="summary-metric-value loaded-content">BIP-340 Schnorr Signatures</h3>
+                </a>
+                <p class="summary-sublabel">Optimizing signature validation speed & dynamic multisig capabilities.</p>
+                
+                <div class="project-card-actions mt-3">
+                    <div class="action-metrics">
+                        <span class="action-item">₿ 1.15 M<span class="summary-sublabel ms-1">Raised</span></span>
+                        <span class="action-item">45<span class="summary-sublabel ms-1">Active Devs</span></span>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="zap-btn" title="Zap Sats via LN" data-bs-toggle="modal" data-bs-target="#zapModal"><span class="zap-icon">⚡</span></button>
+                        <a asp-area="" asp-page="/Projects/Detail" asp-route-slug="bip340" asp-fragment="comments" class="comment-icon-link"><span class="comment-icon">💬</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="summary-metric-box project-card">
+                <span class="ticker-identity text-muted-fade">RESEARCH PHASE</span>
+                <a asp-area="" asp-page="/Projects/Detail" asp-route-slug="cypherpunk-lib" class="project-title-link">
+                    <h3 class="summary-metric-value loaded-content">The Bitcoin Privacy Library</h3>
+                </a>
+                <p class="summary-sublabel">Aggregating protocol research on mixing and privacy enhancements.</p>
+                
+                <div class="project-card-actions mt-3">
+                    <div class="action-metrics">
+                        <span class="action-item">₿ 0.45 M</span>
+                        <span class="action-item">12</span>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="zap-btn"><span class="zap-icon">⚡</span></button>
+                        <a asp-area="" asp-page="/Projects/Detail" asp-fragment="comments" class="comment-icon-link"><span class="comment-icon">💬</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="liquid-glass-panel mt-5" id="ideas">
+        <div class="panel-header-row align-items-baseline mb-4">
+            <div class="treasury-title-group">
+                <h2 class="treasury-section-title">Featured Idea Board</h2>
+                <p class="treasury-section-subtitle">We handpick ideas. The community decides.</p>
+            </div>
+            <button class="hero-inline-link" data-bs-toggle="modal" data-bs-target="#submitIdeaModal">Submit Concept <span class="arrow-diagonal">↗</span></button>
+        </div>
+
+        <div class="treasury-summary-grid ideas-grid">
+            <div class="summary-metric-box idea-card">
+                <div class="idea-header mb-3">
+                    <span class="ticker-identity">CONCEPT_B_312</span>
+                    <div class="vote-stack">
+                        <button class="vote-btn vote-up" title="Upvote" onclick="voteIdea(312, 'up')">
+                            <svg class="vote-icon" viewBox="0 0 24 24"><path d="M12 4l-8 8h16l-8-8z" fill="currentColor"/></svg>
+                        </button>
+                        <span class="vote-count" id="votes-312">2.1K</span>
+                        <button class="vote-btn vote-down" title="Downvote" onclick="voteIdea(312, 'down')">
+                            <svg class="vote-icon" viewBox="0 0 24 24"><path d="M12 20l-8-8h16l-8 8z" fill="currentColor"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <h4 class="story-title loaded-content">Quantum-Resistant Consensus Protocol</h4>
+                <p class="story-excerpt paragraph-text mb-4">Exploring dynamic post-quantum signature schemes for Bitcoin's UTXO set validation.</p>
+                <div class="ticker-identity text-muted-fade">CURATED_IDEAS • VOTE_ACTIVE</div>
+            </div>
+
+            <div class="summary-metric-box idea-card">
+                <div class="idea-header mb-3">
+                    <span class="ticker-identity">CONCEPT_B_118</span>
+                    <div class="vote-stack">
+                        <button class="vote-btn vote-up" onclick="voteIdea(118, 'up')">
+                            <svg class="vote-icon" viewBox="0 0 24 24"><path d="M12 4l-8 8h16l-8-8z" fill="currentColor"/></svg>
+                        </button>
+                        <span class="vote-count" id="votes-118">985</span>
+                        <button class="vote-btn vote-down" onclick="voteIdea(118, 'down')">
+                            <svg class="vote-icon" viewBox="0 0 24 24"><path d="M12 20l-8-8h16l-8 8z" fill="currentColor"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <h4 class="story-title loaded-content">Cross-Chain Atomic Swaps with Schnorr</h4>
+                <p class="story-excerpt paragraph-text mb-4">Researching robust, trustless swaps using Schnorr multisig protocols.</p>
+                <div class="ticker-identity text-muted-fade">CURATED_IDEAS • VOTE_ACTIVE</div>
+            </div>
+        </div>
+    </section>
+</div>
